@@ -18,7 +18,12 @@ public class PostService {
         return postRepository.findById(id).orElseThrow(() -> new ObjectNotFoundException("Objeto não encontrado"));
     }
 
-    public List<Post> findByTitle(String text){
+    public List<Post> findByTitle(String text) {
         return postRepository.searchTitle(text);
     }
+
+    public List<Post> findByContent(String content){
+        return postRepository.findByContent(content);
+    }
+
 }

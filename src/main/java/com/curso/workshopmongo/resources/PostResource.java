@@ -30,4 +30,12 @@ public class PostResource {
         return ResponseEntity.ok().body(list);
     }
 
+    @RequestMapping(value = "/contentsearch", method = RequestMethod.GET)
+    public ResponseEntity<List<Post>> findByContent(@RequestParam(value = "content", defaultValue = "") String content){
+        content = URL.decodeParam(content);
+
+        List<Post> list = postService.findByContent(content);
+        return ResponseEntity.ok().body(list);
+    }
+
 }

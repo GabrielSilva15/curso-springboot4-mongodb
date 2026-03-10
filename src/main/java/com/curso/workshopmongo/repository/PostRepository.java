@@ -13,5 +13,8 @@ public interface PostRepository extends MongoRepository<Post,String> {
     @Query("{ 'title': { $regex: ?0 , $options: 'i'}}")
     List<Post> searchTitle(String text);
 
+    @Query("{ 'body' : { $regex: ?0, $options: 'i'}}")
+    List<Post> findByContent(String content);
+
     List<Post> findByTitleContainingIgnoreCase(String text);
 }
